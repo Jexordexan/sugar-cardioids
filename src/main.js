@@ -1,3 +1,5 @@
+import "./styles/styles.less";
+
 import Vue from "vue";
 import App from "./App.vue";
 

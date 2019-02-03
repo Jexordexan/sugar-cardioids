@@ -1,0 +1,128 @@
+// Sizes
+@heart-radius: 30px;
+
+// Colors
+@shade: 75%;
+@front: hsl(var(--hue), @shade, 85%);
+@side: hsl(var(--hue), @shade, 65%);
+
+body {
+  background: rgb(247, 230, 230);
+}
+
+#app {
+  font-family: "Comic Sans MS", "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
+.form {
+  padding: 30px;
+}
+
+.heart-input {
+  text-align: center;
+  font-size: 30px;
+}
+
+.swatch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  margin: 10px;
+  border: 1px solid rgba(0,0,0,.1);
+  background: @front;
+}
+
+
+.heart-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  max-width: 600px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.orange {
+  --hue: 20 !important;
+}
+
+.yellow {
+  --hue: 50 !important;
+}
+
+.green {
+  --hue: 100 !important;
+}
+
+.blue {
+  --hue: 200 !important;
+}
+
+.purple {
+  --hue: 250 !important;
+}
+
+.pink {
+  --hue: 350 !important;
+}
+
+.heart {
+  @size: @heart-radius * 3;
+  width: @size;
+  height: @size;
+  margin: 20px;
+  display: flex;
+  position: relative;
+}
+
+button.reset {
+  border: none;
+  background: transparent;
+}
+
+.message {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: bold 16px ComicSansMS;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 3px rgba(255,255,255,1);
+  color: darkred;
+  z-index: 2;
+}
+
+.cardioid {
+  @diam: 2 * @heart-radius;
+
+  transform: rotate(-45deg);
+
+  &:before, &:after {
+    display: block;
+    content: '';
+    background: @front;
+    box-shadow: -7px 10px @side;
+  }
+
+  &:before {
+    width: @diam;
+    height: @heart-radius;
+    border-radius: @heart-radius @heart-radius 0 0;
+  }
+  &:after {
+    width: @diam + @heart-radius;
+    height: @diam;
+    border-radius: 0 @heart-radius @heart-radius 0;
+  }
+}
