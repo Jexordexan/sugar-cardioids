@@ -33,13 +33,13 @@
 </template>
 
 <script>
-import Heart from "./components/Heart.vue";
-let _idCounter = 0;
-const colorOptions = ["orange", "yellow", "green", "blue", "purple", "pink"];
+import Heart from './components/Heart.vue'
+let _idCounter = 0
+const colorOptions = ['orange', 'yellow', 'green', 'blue', 'purple', 'pink']
 
 function createHeart(text, color) {
-  if (color === "random") {
-    color = colorOptions[Math.floor(Math.random() * colorOptions.length)];
+  if (color === 'random') {
+    color = colorOptions[Math.floor(Math.random() * colorOptions.length)]
   }
 
   return {
@@ -47,50 +47,50 @@ function createHeart(text, color) {
     text,
     color,
     spin: 10 - Math.random() * 20
-  };
+  }
 }
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
     Heart
   },
   data() {
     return {
-      heartText: "",
-      heartColor: "orange",
-      colorOptions: ["random", ...colorOptions],
+      heartText: '',
+      heartColor: 'orange',
+      colorOptions: ['random', ...colorOptions],
       editId: null,
       hearts: [
-        createHeart("I", "orange"),
-        createHeart("Love", "green"),
-        createHeart("Vue", "blue")
+        createHeart('I', 'orange'),
+        createHeart('Love', 'green'),
+        createHeart('Vue', 'blue')
       ]
-    };
+    }
   },
   methods: {
     submit() {
       if (!this.heartText) {
-        return;
+        return
       }
 
-      this.createHeart(this.heartText, this.heartColor);
-      this.heartText = "";
+      this.createHeart(this.heartText, this.heartColor)
+      this.heartText = ''
     },
     eat(id) {
-      const index = this.hearts.findIndex(h => h.id === id);
-      this.hearts.splice(index, 1);
+      const index = this.hearts.findIndex(h => h.id === id)
+      this.hearts.splice(index, 1)
     },
     createHeart(text, color) {
-      this.hearts.push(createHeart(text, color));
+      this.hearts.push(createHeart(text, color))
     },
     startEdit(id) {
-      this.editId = id;
+      this.editId = id
     },
     submitEdit(heart, text) {
-      heart.text = text;
-      this.editId = null;
+      heart.text = text
+      this.editId = null
     }
   }
-};
+}
 </script>

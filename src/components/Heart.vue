@@ -8,9 +8,7 @@
       @keydown.enter="submit"
       @blur="submit"
     />
-    <span v-else class="message" @click="$emit('edit')">
-      {{ text }}
-    </span>
+    <span v-else class="message" @click="$emit('edit')">{{ text }}</span>
     <div class="cardioid"></div>
   </li>
 </template>
@@ -27,16 +25,16 @@ export default {
     rotation() {
       return {
         transform: `rotate(${this.spin}deg)`
-      };
+      }
     }
   },
   methods: {
     submit(event) {
-      const text = event.target.value;
-      this.$emit("change", text);
+      const text = event.target.value
+      this.$emit('change', text)
     }
   }
-};
+}
 </script>
 
 <style>
