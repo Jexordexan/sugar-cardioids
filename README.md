@@ -1,4 +1,9 @@
-# candy-heart
+# Candy Hearts
+
+![a textbox and some colored hearts spelling out "I Love Vue"](header-image.png "Candy Hearts")
+
+
+Made with ❤️ for Boston Vue Meetup
 
 ## Project setup
 ```
