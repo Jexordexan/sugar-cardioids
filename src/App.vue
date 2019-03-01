@@ -5,7 +5,17 @@
       <input class="heart-input" type="text" v-model="heartText" />
       <br />
       <label v-for="color in colorOptions" :key="color" :title="color">
-        <div class="swatch" :class="color">
+        <span v-if="color === 'random'">
+          <input
+            v-model="heartColor"
+            type="radio"
+            name="color"
+            :value="color"
+          />
+          RANDOM
+        </span>
+        <div v-else class="swatch" :class="color">
+          <span v-if="color === 'random'">RANDOM</span>
           <input
             v-model="heartColor"
             type="radio"
@@ -27,7 +37,8 @@
         @edit="startEdit(heart.id)"
         @change="submitEdit(heart, $event)"
         @eat="eat(heart.id)"
-      />
+      >
+      </Heart>
     </ul>
   </div>
 </template>
@@ -66,6 +77,11 @@ export default {
         createHeart('Love', 'green'),
         createHeart('Vue', 'blue')
       ]
+    }
+  },
+  watch: {
+    heartColor() {
+      document.body.className = this.heartColor
     }
   },
   methods: {

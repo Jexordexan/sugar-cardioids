@@ -1,13 +1,14 @@
-// Sizes
-@heart-radius: 30px;
-
 // Colors
 @shade: 75%;
 @front: hsl(var(--hue), @shade, 85%);
 @side: hsl(var(--hue), @shade, 65%);
 
+:root {
+  --hue: 0;
+}
+
 body {
-  background: rgb(247, 230, 230);
+  background: hsl(var(--hue), 75%, 95%);
 }
 
 #app {
@@ -75,54 +76,4 @@ body {
 
 .pink {
   --hue: 350 !important;
-}
-
-.heart {
-  @size: @heart-radius * 3;
-  width: @size;
-  height: @size;
-  margin: 20px;
-  display: flex;
-  position: relative;
-}
-
-button.reset {
-  border: none;
-  background: transparent;
-}
-
-.message {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font: bold 16px ComicSansMS;
-  text-transform: uppercase;
-  text-shadow: 1px 1px 3px rgba(255,255,255,1);
-  color: darkred;
-  z-index: 2;
-}
-
-.cardioid {
-  @diam: 2 * @heart-radius;
-
-  transform: rotate(-45deg);
-
-  &:before, &:after {
-    display: block;
-    content: '';
-    background: @front;
-    box-shadow: -7px 10px @side;
-  }
-
-  &:before {
-    width: @diam;
-    height: @heart-radius;
-    border-radius: @heart-radius @heart-radius 0 0;
-  }
-  &:after {
-    width: @diam + @heart-radius;
-    height: @diam;
-    border-radius: 0 @heart-radius @heart-radius 0;
-  }
 }
